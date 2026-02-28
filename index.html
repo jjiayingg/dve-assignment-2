@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SparkSkate</title>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<style>
+
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 28px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-box {
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* ================= LAYOUT ================= */
+.layout {
+  display: flex;
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+.viewer-section {
+  flex: 1.2;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+model-viewer {
+  width: 85%;
+  height: 85%;
+}
+
+.control-section {
+  flex: 0.8;
+  padding: 60px;
+  border-left: 1px solid #eaeaea;
+}
+
+.product-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* ================= BUTTONS ================= */
+.control-group {
+  margin-bottom: 40px;
+}
+
+.control-group h3 {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #777;
+}
+
+button {
+  padding: 12px 18px;
+  margin: 6px 6px 6px 0;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+button:hover {
+  background: black;
+  color: white;
+  border-color: black;
+  transform: translateY(-2px);
+}
+
+/* ================= HOTSPOTS ================= */
+
+/* PERFECT CIRCLE FIX */
+.Hotspot {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  width: 18px;
+  height: 18px;
+
+  background: white;
+  border-radius: 50%;
+
+  cursor: pointer;
+  box-sizing: border-box;
+
+  line-height: 0;
+  font-size: 0;
+
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+
+  display: block;
+}
+
+.Hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* TOOLTIP */
+.HotspotAnnotation {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  color: #444;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  visibility: hidden;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .nav-links { display: none; }
+  .layout { flex-direction: column; }
+  .control-section {
+    border-left: none;
+    border-top: 1px solid #eaeaea;
+  }
+  model-viewer {
+    width: 95%;
+    height: 70vh;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="nike logo.png" alt="Logo">
+  </div>
+
+  <nav class="nav-links">
+    <a href="#">New & Featured</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
+    <a href="#">Sale</a>
+    <a href="#">SNKRS</a>
+  </nav>
+
+  <div class="nav-right">
+    <div class="search-box">🔍 Search</div>
+  </div>
+</header>
+
+<div class="layout">
+
+<div class="viewer-section">
+
+<model-viewer
+  src="animationmaterial.glb"
+  ar
+  camera-controls
+  shadow-intensity="1"
+  camera-orbit="-185.4deg 83.62deg 2.138m"
+  field-of-view="30deg"
+  id="gear">
+
+  <button class="Hotspot" slot="hotspot-1"
+    data-surface="16 0 501 493 502 0.254 0.719 0.027"
+    onmouseover="addhotspot1()" onmouseout="removehotspot1()">
+    <div class="HotspotAnnotation" id="hotspot1">training cone</div>
+  </button>
+
+  <button class="Hotspot" slot="hotspot-2"
+    data-surface="11 0 370 380 381 0.353 0.227 0.420"
+    onmouseover="addhotspot2()" onmouseout="removehotspot2()">
+    <div class="HotspotAnnotation" id="hotspot2">screen</div>
+  </button>
+
+  <button class="Hotspot" slot="hotspot-3"
+    data-surface="10 0 2549 2554 2703 0.104 0.735 0.161"
+    onmouseover="addhotspot3()" onmouseout="removehotspot3()">
+    <div class="HotspotAnnotation" id="hotspot3">base</div>
+  </button>
+
+  <button class="Hotspot" slot="hotspot-4"
+    data-surface="14 0 1922 1923 2045 0.704 0.245 0.051"
+    onmouseover="addhotspot4()" onmouseout="removehotspot4()">
+    <div class="HotspotAnnotation" id="hotspot4">handle</div>
+  </button>
+
+</model-viewer>
+
+</div>
+
+<div class="control-section">
+
+<div class="product-title">SparkSkate</div>
+
+<div class="control-group">
+<h3>Animation</h3>
+<button onclick="Btn01()">Exploded View</button>
+<button onclick="Btn02()">Handle</button>
+<button onclick="pauseAnimation()">Pause</button>
+</div>
+
+<div class="control-group">
+<h3>Variant</h3>
+<button onclick="VBtn01()">01</button>
+<button onclick="VBtn02()">02</button>
+<button onclick="VBtn03()">03</button>
+<button onclick="VBtn04()">04</button>
+</div>
+
+<div class="control-group">
+<h3>View</h3>
+<button onclick="setOrbit('-185.4deg 83.62deg 2.138m')">Front</button>
+<button onclick="setOrbit('-183deg 0deg 2.217m')">Top</button>
+<button onclick="setOrbit('-180deg 178deg 2.217m')">Bottom</button>
+<button onclick="setOrbit('-360deg 86deg 2.217m')">Back</button>
+<button onclick="setOrbit('-108deg 84deg 2.138m')">Right</button>
+</div>
+
+</div>
+</div>
+
+<script>
+function setOrbit(orbit){ document.getElementById('gear').cameraOrbit = orbit; }
+
+function addhotspot1(){ document.getElementById("hotspot1").style.visibility="visible"; }
+function removehotspot1(){ document.getElementById("hotspot1").style.visibility="hidden"; }
+
+function addhotspot2(){ document.getElementById("hotspot2").style.visibility="visible"; }
+function removehotspot2(){ document.getElementById("hotspot2").style.visibility="hidden"; }
+
+function addhotspot3(){ document.getElementById("hotspot3").style.visibility="visible"; }
+function removehotspot3(){ document.getElementById("hotspot3").style.visibility="hidden"; }
+
+function addhotspot4(){ document.getElementById("hotspot4").style.visibility="visible"; }
+function removehotspot4(){ document.getElementById("hotspot4").style.visibility="hidden"; }
+
+function VBtn01(){ document.getElementById('gear').variantName="v1"; }
+function VBtn02(){ document.getElementById('gear').variantName="v2"; }
+function VBtn03(){ document.getElementById('gear').variantName="v3"; }
+function VBtn04(){ document.getElementById('gear').variantName="v4"; }
+
+function Btn01(){ const v=document.getElementById('gear'); v.pause(); v.animationName="Exploded View"; v.play(); }
+function Btn02(){ const v=document.getElementById('gear'); v.pause(); v.animationName="handle"; v.play(); }
+function pauseAnimation(){ document.getElementById('gear').pause(); }
+</script>
+
+</body>
+</html>

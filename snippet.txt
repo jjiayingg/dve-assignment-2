@@ -1,0 +1,20 @@
+<model-viewer src="animationmaterial.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls tone-mapping="neutral" poster="poster.png" shadow-intensity="1" camera-orbit="-185.4deg 83.62deg 2.138m" field-of-view="30deg">
+    <button class="Hotspot" slot="hotspot-1" data-surface="16 0 501 493 502 0.254 0.719 0.027" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">training cone</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-surface="11 0 370 380 381 0.353 0.227 0.420" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">screen</div>
+    </button><button class="Hotspot" slot="hotspot-3" data-surface="10 0 2549 2554 2703 0.104 0.735 0.161" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">base</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-surface="14 0 1922 1923 2045 0.704 0.245 0.051" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">handle</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
